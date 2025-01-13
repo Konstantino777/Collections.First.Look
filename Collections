@@ -1,0 +1,139 @@
+package com.productstar.collections.firstlook;
+
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Collections {
+
+    public static void main(String[] args) throws IOException {
+
+        HashMap<Integer, String> hashMap = new HashMap<>();
+
+        hashMap.put(1, "first");
+        hashMap.put(2, "second");
+        hashMap.put(3, "third");
+        hashMap.put(4, "forth");
+        hashMap.put(5, "fifth");
+        hashMap.put(6, "sixth");
+        hashMap.put(7, "seventh");
+        hashMap.put(8, "eighth");
+        hashMap.put(9, "ninth");
+
+
+        System.out.println(hashMap);
+        System.out.println("-------------------------------------------------------------------------------------");
+
+//        reversedKeyAndValue(hashMap);
+//
+//        oneMoreReversedKeyAndValue(hashMap);
+
+        int size = 1000000;
+        ArrayList<Integer> arrayList = new ArrayList<>(size);
+
+        Random random_1 = new Random();
+        for (int i = 0; i < size; i++) {
+            arrayList.add(i, random_1.nextInt(1000000));
+        }
+
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        Random random_2 = new Random();
+        for (int i = 0; i < size; i++) {
+            linkedList.add(i, random_2.nextInt(1000000));
+        }
+
+
+
+
+        Collections obj = new Collections();
+        int numbersOfElements = 1000;
+
+        long t_1_1 = System.currentTimeMillis();
+//        System.out.println(obj.getRandomElementArray(arrayList,numbersOfElements));
+        long t_1_2 = System.currentTimeMillis();
+        System.out.println(t_1_2 - t_1_1);
+        System.out.println("");
+
+        long t_2_1 = System.currentTimeMillis();
+//        System.out.println(obj.getRandomElementLinked(linkedList,numbersOfElements));
+        long t_2_2 = System.currentTimeMillis();
+        System.out.println(t_2_2 - t_2_1);
+        System.out.println("");
+
+
+
+
+        ArrayList<String> arrList = new ArrayList<>();
+        arrList.add("first");
+        arrList.add("second");
+        arrList.add("second");
+        arrList.add("first");
+        arrList.add("forth");
+        arrList.add("ninth");
+        arrList.add("first");
+        arrList.add("second");
+        arrList.add("tenth");
+        arrList.add("eleventh");
+        arrList.add("first");
+
+        System.out.println(arrList);
+
+//        uniqueElements(arrList);
+
+    }
+
+
+
+
+
+    public static void reversedKeyAndValue (HashMap<Integer, String> hashMap) {
+        HashMap<String, Integer> reversedHashMap = new HashMap<>();
+        for (Integer i : hashMap.keySet()) {
+            reversedHashMap.put(hashMap.get(i),i );
+
+        }
+        System.out.println(reversedHashMap);
+    }
+
+    public static void oneMoreReversedKeyAndValue (HashMap<Integer, String> hashMap) {
+        HashMap<String, Integer> reversedHashMap = new HashMap<>();
+        hashMap.forEach((key, value) -> reversedHashMap.put(value, key));
+        System.out.println(reversedHashMap);
+    }
+
+    public ArrayList<Integer> getRandomElementArray (ArrayList<Integer> arrayList, int totalItems) {
+
+        Random rand = new Random();
+
+        ArrayList<Integer> newArrList = new ArrayList<>();
+        for (int i = 0; i < totalItems; i++) {
+            int randomIndex = rand.nextInt(arrayList.size());
+            newArrList.add(arrayList.get(randomIndex));
+
+        }
+        return newArrList;
+
+    }
+
+    public LinkedList<Integer> getRandomElementLinked (LinkedList<Integer> linkedList, int totalItems) {
+
+        Random rand = new Random();
+
+        LinkedList<Integer> newLinList = new LinkedList <>();
+        for (int i = 0; i < totalItems; i++) {
+            int randomIndex = rand.nextInt(linkedList.size());
+            newLinList.add(linkedList.get(randomIndex));
+
+        }
+        return newLinList;
+
+    }
+
+    public static void uniqueElements (ArrayList<String> arrList) {
+
+        SortedSet<String> sortedSet = new TreeSet<>(arrList);
+        System.out.println(sortedSet);
+    }
+
+}
