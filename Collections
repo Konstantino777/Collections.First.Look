@@ -24,43 +24,36 @@ public class Collections {
         System.out.println(hashMap);
         System.out.println("-------------------------------------------------------------------------------------");
 
-//        reversedKeyAndValue(hashMap);
-//
-//        oneMoreReversedKeyAndValue(hashMap);
+        reversedKeyAndValue(hashMap);           // 1й метод меняющий местами ключ и значение
 
+        oneMoreReversedKeyAndValue(hashMap);    // 2й метод меняющий местами ключ и значение
+
+
+        // сравнение работы коллекций
         int size = 1000000;
         ArrayList<Integer> arrayList = new ArrayList<>(size);
-
-        Random random_1 = new Random();
-        for (int i = 0; i < size; i++) {
-            arrayList.add(i, random_1.nextInt(1000000));
-        }
-
         LinkedList<Integer> linkedList = new LinkedList<>();
-
-        Random random_2 = new Random();
+        Random random = new Random();
         for (int i = 0; i < size; i++) {
-            linkedList.add(i, random_2.nextInt(1000000));
+            arrayList.add(i, random.nextInt(1000000));
+                    linkedList.add(i, random.nextInt(1000000));
         }
-
-
 
 
         Collections obj = new Collections();
         int numbersOfElements = 1000;
 
         long t_1_1 = System.currentTimeMillis();
-//        System.out.println(obj.getRandomElementArray(arrayList,numbersOfElements));
+        System.out.println(obj.getRandomElementArray(arrayList,numbersOfElements));
         long t_1_2 = System.currentTimeMillis();
         System.out.println(t_1_2 - t_1_1);
         System.out.println("");
 
         long t_2_1 = System.currentTimeMillis();
-//        System.out.println(obj.getRandomElementLinked(linkedList,numbersOfElements));
+        System.out.println(obj.getRandomElementLinked(linkedList,numbersOfElements));
         long t_2_2 = System.currentTimeMillis();
         System.out.println(t_2_2 - t_2_1);
         System.out.println("");
-
 
 
 
@@ -78,14 +71,9 @@ public class Collections {
         arrList.add("first");
 
         System.out.println(arrList);
-
-//        uniqueElements(arrList);
+        uniqueElements(arrList);       // метод удаляющий дубликаты с помощью коллекций
 
     }
-
-
-
-
 
     public static void reversedKeyAndValue (HashMap<Integer, String> hashMap) {
         HashMap<String, Integer> reversedHashMap = new HashMap<>();
